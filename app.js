@@ -16,9 +16,30 @@ const render = require("./lib/htmlRenderer");
 
 
 function managerInfo(){
-    return inquirer.prompt({
+    return inquirer.prompt([
+        {
+            messege:"What is the Managers name?",
+            type:"input",
+            name:"name"
+        },
+        {
+            messege:"What is the Managers ID",
+            type:"input",
+            name:"id"
+        },
+        {
+            messege:"What is the Managers email address?",
+            type:"input",
+            name:"email"
+        },
+        {
+            messege:"What is the Managers office number?",
+            type:"input",
+            name:"officeNumber"
+        },
 
-    }).then( (response)=>{
+
+    ]).then( (response)=>{
         const newManager= new Manager(response.name,response.id,response.email,response.officeNumber);
         employeeArr.push(newManager);
         employeeInfo();
@@ -29,9 +50,15 @@ function managerInfo(){
     
 };
 function employeeInfo(){
-    return inquirer.prompt({
+    return inquirer.prompt([
+        {
+            messege:"What type of Employee would you like to add?",
+            type:"list",
+            choices:["Engineer","Intern","I dont want to add any more Employees"],
+            name:"data"
+        },
 
-    }).then( (response)=>{
+    ]).then( (response)=>{
            //prompt then conditional leading to other function or cal to render html and write file
            if(response.data == "Engineer"){
                engineerInfo();
@@ -46,9 +73,30 @@ function employeeInfo(){
     //prompt then conditional leading to other function or cal to render html and write file
 };
 function engineerInfo(){
-    return inquirer.prompt({
+    return inquirer.prompt([
+        {
+            messege:"What is the Engineers name?",
+            type:"input",
+            name:"name"
+        },
+        {
+            messege:"What is the Engineers ID",
+            type:"input",
+            name:"id"
+        },
+        {
+            messege:"What is the Engineers email address?",
+            type:"input",
+            name:"email"
+        },
+        {
+            messege:"What is the Engineers gitHub accout username?",
+            type:"input",
+            name:"github"
+        },
 
-    }).then( (response)=>{
+
+    ]).then( (response)=>{
         const newEngineer= new Engineer(response.name,response.id,response.email,response.github);
         employeeArr.push(newEngineer);
         employeeInfo();
@@ -56,9 +104,30 @@ function engineerInfo(){
 
 };
 function internInfo(){
-    return inquirer.prompt({
+    return inquirer.prompt([
+        {
+            messege:"What is the Interns name?",
+            type:"input",
+            name:"name"
+        },
+        {
+            messege:"What is the Interns ID",
+            type:"input",
+            name:"id"
+        },
+        {
+            messege:"What is the Interns email address?",
+            type:"input",
+            name:"email"
+        },
+        {
+            messege:"What is the Interns school?",
+            type:"input",
+            name:"officeNumber"
+        },
 
-    }).then( (response)=>{
+
+    ]).then( (response)=>{
         const newIntern= new Intern(response.name,response.id,response.email,response.school);
         employeeArr.push(newIntern);
         employeeInfo();
