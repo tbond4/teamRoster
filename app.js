@@ -18,22 +18,22 @@ const render = require("./lib/htmlRenderer");
 function managerInfo(){
     return inquirer.prompt([
         {
-            messege:"What is the Managers name?",
             type:"input",
+            message:"What is the Managers name?",
             name:"name"
         },
         {
-            messege:"What is the Managers ID",
+            message:"What is the Managers ID",
             type:"input",
             name:"id"
         },
         {
-            messege:"What is the Managers email address?",
+            message:"What is the Managers email address?",
             type:"input",
             name:"email"
         },
         {
-            messege:"What is the Managers office number?",
+            message:"What is the Managers office number?",
             type:"input",
             name:"officeNumber"
         },
@@ -52,7 +52,7 @@ function managerInfo(){
 function employeeInfo(){
     return inquirer.prompt([
         {
-            messege:"What type of Employee would you like to add?",
+            message:"What type of Employee would you like to add?",
             type:"list",
             choices:["Engineer","Intern","I dont want to add any more Employees"],
             name:"data"
@@ -75,22 +75,22 @@ function employeeInfo(){
 function engineerInfo(){
     return inquirer.prompt([
         {
-            messege:"What is the Engineers name?",
+            message:"What is the Engineers name?",
             type:"input",
             name:"name"
         },
         {
-            messege:"What is the Engineers ID",
+            message:"What is the Engineers ID",
             type:"input",
             name:"id"
         },
         {
-            messege:"What is the Engineers email address?",
+            message:"What is the Engineers email address?",
             type:"input",
             name:"email"
         },
         {
-            messege:"What is the Engineers gitHub accout username?",
+            message:"What is the Engineers gitHub accout username?",
             type:"input",
             name:"github"
         },
@@ -106,22 +106,22 @@ function engineerInfo(){
 function internInfo(){
     return inquirer.prompt([
         {
-            messege:"What is the Interns name?",
+            message:"What is the Interns name?",
             type:"input",
             name:"name"
         },
         {
-            messege:"What is the Interns ID",
+            message:"What is the Interns ID",
             type:"input",
             name:"id"
         },
         {
-            messege:"What is the Interns email address?",
+            message:"What is the Interns email address?",
             type:"input",
             name:"email"
         },
         {
-            messege:"What is the Interns school?",
+            message:"What is the Interns school?",
             type:"input",
             name:"officeNumber"
         },
@@ -136,7 +136,7 @@ function internInfo(){
 };
 function renderFile(){
     const fileInfo=render(employeeArr);
-    //writefile
+    fs.writeFile("outputs/index.html", fileInfo,(err)=>{ err ? console.log("failed to write file"):console.log("Success!")})
 }
 managerInfo();
 
