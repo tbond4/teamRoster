@@ -7,9 +7,69 @@ const fs = require("fs");
 
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
-
+const employeeArr=[];
 const render = require("./lib/htmlRenderer");
 
+//manager qs, name id email officenum
+
+//then ask next employee or finsih. arrow key q engineer intern or i dont want to add anymore
+
+
+function managerInfo(){
+    return inquirer.prompt({
+
+    }).then( (response)=>{
+        const newManager= new Manager(response.name,response.id,response.email,response.officeNumber);
+        employeeArr.push(newManager);
+        employeeInfo();
+    });
+
+    
+
+    
+};
+function employeeInfo(){
+    return inquirer.prompt({
+
+    }).then( (response)=>{
+           //prompt then conditional leading to other function or cal to render html and write file
+           if(response.data == "Engineer"){
+               engineerInfo();
+           }else if(response.data == "Intern"){
+                internInfo();
+           }else{
+            renderFile();
+           }
+        
+    });
+
+    //prompt then conditional leading to other function or cal to render html and write file
+};
+function engineerInfo(){
+    return inquirer.prompt({
+
+    }).then( (response)=>{
+        const newEngineer= new Engineer(response.name,response.id,response.email,response.github);
+        employeeArr.push(newEngineer);
+        employeeInfo();
+    });
+
+};
+function internInfo(){
+    return inquirer.prompt({
+
+    }).then( (response)=>{
+        const newIntern= new Intern(response.name,response.id,response.email,response.school);
+        employeeArr.push(newIntern);
+        employeeInfo();
+    });
+
+};
+function renderFile(){
+    const fileInfo=render(employeeArr);
+    //writefile
+}
+managerInfo();
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
